@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pretty Lovely</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: myFont;
+        src: url(font/Gistesy.ttf);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              krona: ["Krona One", "sans-serif"],
+              myFont: ["myFont", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!------------------------HEADER----------------------------->
+    <header class="pb-[70px]">
+      <!------------------------NAVBAR----------------------------->
+      <nav
+        class="flex justify-between h-[70px] bg-white text-black items-center fixed pr-3 md:pr-10 w-full z-20"
+      >
+        <div class="md:hidden ml-3">
+          <button
+            id="menu-button"
+            class="text-gray-700 focus:outline-none z-30 relative transition-transform"
+          >
+            <!-- Icon per Hamburger Menu -->
+            <svg
+              id="hamburger-icon"
+              class="w-6 h-6 inline-block absolute -top-5 content-center rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+            <!-- Icon per Close Menu -->
+            <svg
+              id="close-icon"
+              class="w-6 h-6 hidden absolute -top-5 hover:text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div
+          id="mobile-menu"
+          class="text-white fixed top-0 left-0 min-w-72 h-full bg-slate-900 shadow-lg transform transition-transform duration-[0.4s] ease-out -translate-x-full z-10"
+        >
+          <ul class="flex flex-col space-y-6 mt-16">
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="#home">HOME</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="#about">ABOUT</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="#activities"
+                >OUR PRODUCTS</a
+              >
+            </li>
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="#contact">CONTACT</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="#testimonials"
+                >TESTIMONIALS</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="container relative mx-auto flex justify-between items-center"
+        >
+          <div class="">
+            <img
+              class="size-28 md:size-36 ml-4 md:ml-0"
+              src="images/file (2).png"
+              alt="logo"
+            />
+          </div>
+          <div class="hidden md:flex space-x-10">
+            <ul class="flex space-x-12">
+              <li
+                class="cursor-pointer hover:text-pink-300 transition-transform ease-out duration-[0.5s] hover:scale-[1.1]"
+              >
+                <a class="font-krona text-[10px]" href="#home">HOME</a>
+              </li>
+              <li
+                class="cursor-pointer hover:text-pink-300 transition-transform ease-out duration-[0.5s] hover:scale-[1.1]"
+              >
+                <a class="font-krona text-[10px]" href="#about">ABOUT</a>
+              </li>
+              <li
+                class="cursor-pointer hover:text-pink-300 transition-transform ease-out duration-[0.5s] hover:scale-[1.1]"
+              >
+                <a class="font-krona text-[10px]" href="#activities"
+                  >OUR PRODUCTS</a
+                >
+              </li>
+              <li
+                class="cursor-pointer hover:text-pink-300 transition-transform ease-out duration-[0.5s] hover:scale-[1.1]"
+              >
+                <a class="font-krona text-[10px]" href="#contact">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+          <img
+            id="shopping-bag-icon"
+            class="cursor-pointer size-5"
+            src="images/icons8-shopping-bag-nero.png"
+            alt=""
+          />
+          <div
+            id="item-count"
+            class="size-5 bg-pink-300 absolute rounded-full right-3 top-[35px] text-black font-semibold flex items-center justify-center text-[12px] z-50 md:-right-3 md:top-[50px]"
+          >
+            0
+          </div>
+        </div>
+      </nav>
+
+      <div
+        id="shopping-bag-content"
+        class="fixed top-[70px] bg-white right-0 w-[350px] md:w-[400px] hidden px-5 z-40 shadow-md"
+      >
+        <h2 class="mt-5 font-semibold text-xl mb-5">Shopping bag</h2>
+        <div id="bag-items" class="max-h-[400px] overflow-y-auto"></div>
+
+        <div class="flex justify-end my-5 font-semibold">
+          <span>Total: € <span id="total-price">0.00</span></span>
+        </div>
+        <div class="flex justify-center mb-5">
+          <button
+            id="checkout-home-button"
+            class="bg-pink-300 w-96 h-10 hover:bg-black text-white text-lg font-semibold"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!------------------------HERO SECTION----------------------------->
+
+    <div id="toTopButton" class="hidden">
+      <button
+        class="bg-slate-950 size-12 rounded-full fixed z-50 bottom-12 hover:opacity-80 right-4"
+        title="Top of the Page"
+      >
+        <img
+          class="size-7 m-auto"
+          src="images/icons8-flèche-vers-le-haut-100.png"
+          alt="immagine per andare in alto"
+        />
+      </button>
+    </div>
+
+    <section
+      id="home"
+      class="h-[calc(100vh-70px)] flex bg-[url(images/header4.jpg)] items-center justify-center bg-no-repeat bg-cover mb-20"
+    >
+      <div class="font-semibold text-center">
+        <h1
+          class="text-[60px] mb-5 font-light font-[myFont] text-[#dad3d3] md:text-[150px]"
+        >
+          Pretty Lovely
+        </h1>
+        <h5 class="text-white tracking-[12px] text-[15px]">
+          intimate clothing
+        </h5>
+      </div>
+    </section>
+
+    <!---------------------------MAIN----------------------------->
+
+    <main id="about">
+      <div>
+        <img
+          class="absolute z-[-1] w-[400px] left-[-150px]"
+          src="images/deco.png"
+          alt="immagine decorazione"
+        />
+      </div>
+      <div>
+        <img
+          class="absolute z-[-1] w-[150px] right-[100x] mt-20"
+          src="images/deco2.png"
+          alt="immagine decorazione"
+        />
+      </div>
+      <section class="flex flex-col items-center mb-20 justify-center">
+        <h4
+          class="text-3xl relative text-gray-100 font-semibold md:text-5xl xl:text-8xl font-krona"
+        >
+          ABOUT
+        </h4>
+        <h5 class="text-xl absolute font-semibold md:text-3xl">ABOUT</h5>
+      </section>
+      <section
+        class="flex flex-col items-center justify-center mb-20 bg-slate-900 md:flex-row lg:h-[800px] xl:h-[600px]"
+      >
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="object-cover object-center h-[400px] overflow-hidden md:w-[680px]"
+        >
+          <video
+            class="h-[400px] w-[350px] object-cover object-center md:w-full"
+            autoplay
+            loop
+            muted
+            src="videos/body-shape.mp4"
+          ></video>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="border-l-slate-900 flex flex-col w-[350px] h-[750px] mb-10 rounded-b font-semibold rounded-8xl bg-white z-[2] text-lg justify-center items-center text-center md:my-5 md:w-[600px] md:h-[700px] md:border-2 p-6 xl:w-[600px] xl:h-[600px] xl:my-5"
+        >
+          <hr
+            class="border-[2px] border-pink-300 items-center mb-[40px] w-[100px]"
+          />
+          <p class="mb-4">
+            At <strong>Pretty Lovely</strong>, we are committed to offering
+            products of the highest quality, and our range of body shapes is no
+            exception. Designed to enhance every curve and provide unparalleled
+            comfort, our body shapes are the perfect choice for those seeking to
+            combine aesthetics and well-being.
+          </p>
+          <p class="mb-4">
+            Crafted from the finest materials, our body shapes are selected for
+            their softness, elasticity, and durability. We use innovative and
+            breathable fabrics that perfectly contour to your shape while
+            allowing your skin to breathe. Each piece is meticulously made to
+            ensure a perfect fit and optimal comfort throughout the day.
+          </p>
+          <hr
+            class="border-[2px] border-pink-300 items-center mt-[30px] w-[100px]"
+          />
+        </div>
+      </section>
+      <section
+        class="flex flex-col-reverse h-[1200px] bg-gradient-to-b from-white to-stone-100 justify-between px-[20px] pt-10 -mt-20 border-x-white border-b-8 items-center pb-0 md:flex-row md:h-[650px] md:pb-10 lg:px-16 xl:px-[210px]"
+      >
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="shadow-xl w-[320px] h-[700px] mb-10 text-center p-10 font-semibold rounded-3xl bg-stone-300 md:w-[450px] md:h-[520px] xl:w-[600px] xl:h-[400px]"
+        >
+          <p class="mb-4">
+            We understand the importance of comfort when choosing your clothing.
+            That’s why our body shapes are designed to provide exceptional
+            support without compromising on comfort. Using advanced technologies
+            and ergonomic adjustments, our body shapes sculpt and smooth your
+            figure, giving you a feeling of confidence and well-being throughout
+            the day.
+          </p>
+          <p>
+            The beauty of our body shapes lies in their sophisticated and
+            timeless design. Whether you prefer a classic or modern style, our
+            collection offers a variety of models that suit every occasion.
+            Delicate details like lace, embroidery, and strategic cutouts add a
+            touch of glamour, making each body shape a unique and elegant piece.
+          </p>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="rounded-lg mb-10 border-4 border-white w-[350px] h-[500px] overflow-hidden gap-20 md:w-[400px] md:mb-0 md:border-0 md:ml-2 lg:ml-0"
+        >
+          <img
+            class="object-cover object-center"
+            src="images/presentation.jpg"
+            alt="immagine presentation prodotto"
+          />
+        </div>
+      </section>
+
+      <section
+        class="mb-20 flex w-full bg-[url(images/parallax.jpg)] h-[500px] bg-cover object-center bg-no-repeat bg-fixed justify-center items-center"
+      >
+        <div
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          class="flex gap-8 font-bold text-lg text-white md:text-3xl md:gap-16 xl:gap-32"
+        >
+          <h6>COMFORT</h6>
+          <h6>GLAMOUR</h6>
+          <h6>ELEGANCE</h6>
+        </div>
+      </section>
+      <section
+        id="activities"
+        class="flex flex-col items-center mb-6 justify-center"
+      >
+        <h4
+          class="text-3xl relative text-gray-100 font-semibold md:text-5xl xl:text-8xl font-krona"
+        >
+          OUR PRODUCTS
+        </h4>
+        <h5 class="text-xl absolute font-semibold md:text-3xl">OUR PRODUCTS</h5>
+      </section>
+      <div class="flex justify-center">
+        <h2 class="mb-10 text-sm md:text-xl font-krona">Body Shapers</h2>
+      </div>
+      <section
+        class="flex flex-col gap-y-8 justify-center items-center bg-gradient-to-b from-white to-stone-400 pb-20 mb-20 md:grid md:grid-cols-2 md:place-items-center md:gap-y-20 xl:grid-cols-3"
+      >
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel3"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/3.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/3.2.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage3('carousel3')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage3('carousel3')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-black rounded-full hover-container cursor-pointer"
+                title="Nero disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 24.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="24.99"
+                data-quantity="1"
+                data-image="images/3.JPG"
+                data-position="1"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel8"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/8.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/8.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/8.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/8.3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/8.4.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage8('carousel8')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage8('carousel8')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-200 rounded-full cursor-pointer"
+                title="Arancio disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 34.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="34.99"
+                data-quantity="1"
+                data-image="images/8.JPG"
+                data-position="2"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel9"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/9.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/9.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/9.3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/9.4.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage9('carousel9')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage9('carousel9')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-white rounded-full cursor-pointer"
+                title="Bianco disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 26.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="26.99"
+                data-quantity="1"
+                data-image="images/9.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform object-cover duration-500 ease-in-out"
+              id="carousel6"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/6.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/6.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/6.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/6.3.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage6('carousel6')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage6('carousel6')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-stone-400 rounded-full cursor-pointer"
+                title="Grigio disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 24.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="24.99"
+                data-quantity="1"
+                data-image="images/6.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel5"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/5.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/5.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/5.2.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage5('carousel5')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage5('carousel5')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-300 rounded-full cursor-pointer"
+                title="Arancio disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 25.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="25.99"
+                data-quantity="1"
+                data-image="images/5.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel7"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/7.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/7.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/7.2.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage7('carousel7')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage7('carousel7')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-300 rounded-full cursor-pointer"
+                title="Arancio disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 22.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="22.99"
+                data-quantity="1"
+                data-image="images/7.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel1"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/1.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/1.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/1.3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/1.4.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage1('carousel1')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage1('carousel1')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-200 rounded-full cursor-pointer"
+                title="Arancio disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 25.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="25.99"
+                data-quantity="1"
+                data-image="images/1.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel2"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/2.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/2.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/2.3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/2.4.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage2('carousel2')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage2('carousel2')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-900 rounded-full cursor-pointer"
+                title="Marrone disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 29.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="30"
+                data-quantity="1"
+                data-image="images/2.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel4"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/4.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/4.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/4.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/4.3.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/4.4.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage4('carousel4')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage4('carousel4')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-black rounded-full cursor-pointer"
+                title="Nero disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 15.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="15.99"
+                data-quantity="1"
+                data-image="images/4.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel10"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/10.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/10.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/10.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/10.3.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage10('carousel10')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage10('carousel10')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-black rounded-full cursor-pointer"
+                title="Nero disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 39.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="39.99"
+                data-quantity="1"
+                data-image="images/10.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel11"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/11.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/11.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/11.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/11.3.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage11('carousel11')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage11('carousel11')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-orange-300 rounded-full cursor-pointer"
+                title="Oro disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 19.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="19.99"
+                data-quantity="1"
+                data-image="images/11.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="w-[350px] h-[520px] rounded-xl overflow-hidden shadow-xl relative hover:shadow-2xl"
+        >
+          <div>
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              id="carousel12"
+            >
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/12.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/12.1.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/12.2.JPG"
+                alt="immagine body-shape"
+              />
+              <img
+                class="w-[350px] h-[400px] object-cover object-center"
+                src="images/12.3.JPG"
+                alt="immagine body-shape"
+              />
+            </div>
+            <button
+              class="absolute top-[40%] left-0 ml-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="prevImage12('carousel12')"
+            >
+              &#60;
+            </button>
+            <button
+              class="absolute top-[40%] right-0 mr-2 text-xl rounded-full size-11 m-auto hover:bg-neutral-800 hover:text-white"
+              onclick="nextImage12('carousel12')"
+            >
+              &#62;
+            </button>
+          </div>
+
+          <div
+            class="bg-pink-100 w-[380] h-[120px] px-5 text-black flex flex-col justify-center"
+          >
+            <div class="flex justify-between text-base mb-0.5">
+              <span>Shapewear For Women</span>
+              <div
+                class="size-3 bg-amber-900 rounded-full cursor-pointer"
+                title="Marrone disponibile"
+              ></div>
+            </div>
+            <div class="mb-0.5">
+              <span>€ 20.99</span>
+            </div>
+            <div class="items-center mx-auto">
+              <button
+                class="add-to-cart bg-black text-white items-center justify-center text-sm rounded-3xl px-5 py-2 border-2 border-black hover:opacity-80 active:bg-white active:text-pink-500"
+                data-name="Body Shappers"
+                data-description="Shapewear For Woman"
+                data-price="20.99"
+                data-quantity="1"
+                data-image="images/12.JPG"
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="flex flex-col items-center justify-center mb-16 xl:mb-0"
+      >
+        <h4
+          class="text-3xl relative text-gray-100 font-semibold md:text-5xl xl:text-8xl font-krona"
+        >
+          CONTACT US
+        </h4>
+        <h5 class="text-xl absolute font-semibold md:text-3xl">CONTACT US</h5>
+      </section>
+
+      <div
+        class="flex flex-col justify-center items-center bg-gradient-to-b from-white to-pink-100 mt-36 lg:mt-48 xl:mt-0"
+      >
+        <div
+          class="flex flex-col items-center justify-center h-[600px] rounded-[2] md:pl-10 xl:flex-row"
+        >
+          <div
+            data-aos="fade-in"
+            data-aos-delay=""
+            data-aos-easing="linear"
+            data-aos-duration="700"
+            class="bg-stone-200 px-2 shadow-xl mb items-center justify-center w-[330px] h-[450px] py-5 mb-10 flex flex-col md:px-10 md:w-[450px] md:items-start md:h-[350px] xl:mb-0"
+          >
+            <span class="mb-4">GET IN TOUCH</span>
+            <div class="mb-2">
+              <input
+                class="w-[150px] mr-[8px] rounded-sm p-2 outline-stone-300 text-sm md:w-[175px]"
+                type="text"
+                placeholder="Name"
+              />
+              <input
+                class="w-[150px] rounded-sm p-2 outline-stone-300 text-sm md:w-[175px]"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+            <input
+              class="w-[312px] mb-2 p-2 outline-stone-300 text-sm md:w-[364px]"
+              type="text"
+              placeholder="Subject"
+            />
+            <textarea
+              class="rounded-sm mb-2 p-2 w-[312px] outline-stone-300 text-sm md:w-[364px]"
+              name="message"
+              cols="30"
+              rows="5"
+              placeholder="Your message"
+            ></textarea>
+            <button
+              class="bg-black w-[145px] font-normal text-white py-2 px-5 rounded-lg text-sm mt-2"
+            >
+              Send Message
+            </button>
+          </div>
+          <div
+            data-aos="fade-in"
+            data-aos-delay=""
+            ata-aos-easing="linear"
+            data-aos-duration="700"
+            class="bg-slate-800 w-[300px] h-[450px] rounded-md flex flex-col justify-center mb-20 p-5 text-white lg:mb-40 xl:mb-0"
+          >
+            <span class="mb-5">CONTACT US</span>
+            <div class="flex items-center mb-4">
+              <img
+                class="size-8 bg-slate-600 rounded-full p-2 mr-3"
+                src="images/icons8-marqueur-100.png"
+                alt="icon localizzazione"
+              />
+              <span>Via A. Frizzi 36, 20100 Milano</span>
+            </div>
+            <div class="flex mb-4">
+              <img
+                class="size-8 bg-slate-600 rounded-full p-2 mr-3"
+                src="images/icons8-téléphone-100.png"
+                alt="icon telefono"
+              />
+              <span>+398398939</span>
+            </div>
+            <div id="findUs" class="flex mb-5">
+              <img
+                class="size-8 bg-slate-600 rounded-full p-2 mr-3"
+                src="images/icons8-email-24.png"
+                alt="icon mail"
+              />
+              <span>bimoulè@mail.com</span>
+            </div>
+            <span class="mb-5"> FOLLOW US </span>
+            <div class="flex gap-6">
+              <img
+                class="size-6 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.4] lg:size-7"
+                src="images/icons8-facebook-blu.png"
+                alt="icon facebook"
+              />
+              <img
+                class="size-6 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.4] lg:size-7"
+                src="images/icons8-twitter-blu.png"
+                alt="icon x"
+              />
+              <img
+                class="size-6 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.4] lg:size-7"
+                src="images/icons8-youtube-blu.png"
+                alt="icon youtube"
+              />
+              <img
+                class="size-6 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.4] lg:size-7"
+                src="images/icons8-instagram-blu.png"
+                alt="icon instagram"
+              />
+              <img
+                class="size-6 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.4] lg:size-7"
+                src="images/icons8-tic-tac-blu.png"
+                alt="icon tik tok"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="h-[257px] boreder-2 mt-10 mb-20 border-b-2 border-b-white">
+          <div
+            data-aos="fade-in"
+            data-aos-delay=""
+            data-aos-easing="linear"
+            data-aos-duration="700"
+            class="flex items-center justify-center"
+          >
+            <iframe
+              class="h-64 px-5 w-96 md:w-[550px] lg:w-[800px]"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10126.620850491967!2d9.11855031004244!3d45.47846378289964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c1909e7fc017%3A0x54993b230b18a111!2sSan%20Siro%2C%20Milano%20MI!5e1!3m2!1sit!2sit!4v1709811936053!5m2!1sit!2sit"
+              width="1500"
+              height="600"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <section
+        id="testimonials"
+        class="testimonials h-[600px] justify-center items-center flex flex-col"
+      >
+        <video
+          class="absolute z-[-1] h-[600px] w-full object-cover object-center"
+          autoplay
+          loop
+          muted
+          src="videos/testimonials.mp4"
+        ></video>
+        <p
+          data-aos="fade-in"
+          data-aos-delay=""
+          data-aos-easing="linear"
+          data-aos-duration="700"
+          class="mb-5 md:mb-20 text-white font-bold"
+        >
+          WHAT THEY SAY ABOUT US
+        </p>
+        <div
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="500"
+          class="flex flex-col md:flex-row xl:gap-16"
+        >
+          <div
+            class="cursor-pointer w-80 h-[200px] items-center justify-center rounded-xl border-2 border-white text-[13px] scale-50 transition duration-[1s] hover:scale-[1]"
+          >
+            <div class="bg-transparent px-5 pt-3 pb-[2px]">
+              <div class="flex items-center text-white">
+                <img
+                  class="size-10 mr-2"
+                  src="images/icons8-citation-à-gauche-white.png"
+                  alt=""
+                />
+                <p>Amazing</p>
+              </div>
+              <div>
+                <div class="mb-2">
+                  <p class="text-white">
+                    Excellent purchase! This body shaper is really effective and
+                    pleasant to wear. It helps me feel more confident in all
+                    circumstances.
+                  </p>
+                </div>
+                <div class="flex mb-3">
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex items-center h-[53px] pt-[12px] pb-[12px] bg-pink-50 rounded-b-xl"
+            >
+              <div class="mr-3">
+                <img
+                  class="size-11 rounded-full object-cover object-center"
+                  src="images/testimonial4.jpg"
+                  alt="immagine profile cliente"
+                />
+              </div>
+              <div class="">
+                <p class="text-sm font-bold">Laura M</p>
+                <p class="text-xs text-gray-400">Client</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="cursor-pointer w-80 h-[200px] items-center justify-center rounded-xl border-2 border-white text-[13px] scale-50 transition duration-[1s] hover:scale-[1]"
+          >
+            <div class="bg-transparent px-5 pt-3 pb-[2px]">
+              <div class="flex items-center text-white">
+                <img
+                  class="size-10 mr-2"
+                  src="images/icons8-citation-à-gauche-white.png"
+                  alt="icon citazione"
+                />
+                <p>Excellent</p>
+              </div>
+              <div>
+                <div class="mb-2">
+                  <p class="text-white">
+                    I am very satisfied with this body shaper. It is
+                    comfortable, effective, and very well finished. I use it for
+                    all my outings and feel fabulous.
+                  </p>
+                </div>
+                <div class="flex mb-3">
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-vide.png"
+                    alt="immagine stella"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex items-center h-[53px] pt-[12px] pb-[12px] bg-pink-50 rounded-b-xl"
+            >
+              <div class="mr-3">
+                <img
+                  class="size-11 rounded-full object-cover object-center"
+                  src="images/testimonial1.jpg"
+                  alt="immagine profile cliente"
+                />
+              </div>
+              <div class="">
+                <p class="text-sm font-bold">Naomi P</p>
+                <p class="text-xs text-gray-400">Client</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="hidden cursor-pointer w-80 h-[200px] items-center justify-center rounded-xl border-2 border-white text-[13px] scale-50 transition duration-[1s] hover:scale-[1] lg:inline"
+          >
+            <div class="bg-transparent px-5 pt-3 pb-[2px]">
+              <div class="flex items-center text-white">
+                <img
+                  class="size-10 mr-2"
+                  src="images/icons8-citation-à-gauche-white.png"
+                  alt="icon citazione"
+                />
+                <p>Love it</p>
+              </div>
+              <div>
+                <div class="mb-2">
+                  <p class="text-white">
+                    Great. The body shaper shapes my silhouette, seamless, very
+                    well finished, very thin. The fabric is cool, I loved it, I
+                    really recommend it.
+                  </p>
+                </div>
+                <div class="flex mb-3">
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                  <img
+                    class="size-3"
+                    src="images/icons8-étoile-30.png"
+                    alt="immagine stella"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex items-center h-[53px] pt-[12px] pb-[12px] bg-pink-50 rounded-b-xl"
+            >
+              <div class="mr-3">
+                <img
+                  class="size-11 rounded-full object-cover object-center"
+                  src="images/testimonial5.jpg"
+                  alt="immagine profile cliente"
+                />
+              </div>
+              <div class="">
+                <p class="text-sm font-bold">Tania C</p>
+                <p class="text-xs text-gray-400">Client</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="flex flex-col bg-gradient-to-b from-pink-100 to-white pt-5">
+      <img class="size-28 mb-20 mt-20" src="images/file (2).png" alt="" />
+      <div class="mb-20 px-10">
+        <span class="font-krona text-[9px]"
+          ><a class="font-semibold" href="#home">PRETTY-LOVELY.COM</a> /
+          CUSTOMER SERVICE / LEGAL NOTICE AND PRIVACY / COOKIE POLICY</span
+        >
+      </div>
+      <div
+        class="flex flex-col md:grid md:grid-cols-2 gap-y-12 justify-between mb-20 px-10 lg:flex lg:flex-row"
+      >
+        <div class="w-60 lg:w-44 xl:w-60">
+          <span class="">OUR PRODUCT</span>
+          <ul class="mt-5 font-semibold text-sm hover:font-extrabold">
+            <li><a href="#activities">BODY SHAPERS</a></li>
+          </ul>
+        </div>
+        <div class="w-80 xl:w-80">
+          <span>COMPANY INFORMATION</span>
+          <ul class="mt-5 font-semibold text-sm leading-7">
+            <li class="hover:font-extrabold">
+              <a href="">CAREERS AT PRETTY LOVELY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">ABOUT PRETTY LOVELY GROUP</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">PRETTY LOVELY GROUP SUSTAINABILITY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">PRESS MATERIAL</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">INVESTOR RELATIONS</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">CORPORATE GOVERNANCE</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-64 lg:w-60 xl:w-64">
+          <span>HELP</span>
+          <ul class="mt-5 font-semibold text-sm leading-7">
+            <li class="hover:font-extrabold">
+              <a href="#contact">CUSTOMER SERVICE</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="#findUs">FIND OUR STORE</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">LEGAL NOTICE AND PRIVACY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">GIFT CARD</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">COOKIE POLICY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">REPORT A SCAM</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">COOKIE SETTINGS</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-60 lg:w-60 xl:w-72">
+          <span>SIGN UP NOW</span>
+          <p class="mt-5 mb-5">
+            Welcome Offer: 10% off + free delivery on your first purchase!
+          </p>
+          <a class="font-semibold hover:font-extrabold" href="#contact"
+            >LEARN MORE</a
+          >
+        </div>
+      </div>
+      <div
+        class="flex flex-col pb-5 justify-between items-center h-30 bg-white -mb-10 px-10 lg:flex-row lg:justify-between lg:pb-0"
+      >
+        <div class="mb-6">
+          <p class="text-[12px]">
+            The content of this website is protected by copyright and is the
+            property of franck emmanuel D. 2024
+          </p>
+        </div>
+        <div class="flex gap-6 pb-5">
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-facebook-entouré-48.png"
+            alt="icon facebook"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-instagram-48.png"
+            alt="icon instagram"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-twitterx-48.png"
+            alt="icon x"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-tic-tac-100.png"
+            alt="icon tik tok"
+          />
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    ;
+    <script>
+      AOS.init();
+    </script>
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
