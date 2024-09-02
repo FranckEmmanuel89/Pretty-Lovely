@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pretty Lovely</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: myFont;
+        src: url(font/Gistesy.ttf);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              krona: ["Krona One", "sans-serif"],
+              myFont: ["myFont", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!------------------------HEADER----------------------------->
+    <header class="pb-[70px]">
+      <!------------------------NAVBAR----------------------------->
+      <nav
+        class="flex justify-between h-[70px] bg-white text-black items-center fixed pr-3 md:pr-10 w-full z-20"
+      >
+        <div class="md:hidden ml-3">
+          <button
+            id="menu-button"
+            class="text-gray-700 focus:outline-none z-30 relative transition-transform"
+          >
+            <!-- Icon per Hamburger Menu -->
+            <svg
+              id="hamburger-icon"
+              class="w-6 h-6 inline-block absolute -top-5 content-center rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+            <!-- Icon per Close Menu -->
+            <svg
+              id="close-icon"
+              class="w-6 h-6 hidden absolute -top-5 hover:text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div
+          id="mobile-menu"
+          class="text-white fixed top-0 left-0 min-w-72 h-full bg-slate-900 shadow-lg transform transition-transform duration-[0.4s] ease-out -translate-x-full z-10"
+        >
+          <ul class="flex flex-col space-y-6 mt-16">
+            <li
+              class="cursor-pointer hover:text-pink-300 px-10 py-4 hover:bg-slate-800"
+            >
+              <a class="font-krona text-[10px]" href="index.html">HOME</a>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="container relative mx-auto flex justify-between items-center"
+        >
+          <div class="">
+            <button>
+              <a href="index.html">
+                <img
+                  class="size-28 md:size-36 ml-4 md:ml-0"
+                  src="images/file (2).png"
+                  alt="logo"
+                />
+              </a>
+            </button>
+          </div>
+          <img
+            id="shopping-bag-icon"
+            class="cursor-pointer size-5"
+            src="images/icons8-shopping-bag-nero.png"
+            alt=""
+          />
+          <div
+            id="item-count"
+            class="size-5 bg-pink-300 absolute rounded-full right-3 top-[35px] text-black font-semibold flex items-center justify-center text-[12px] z-50 md:-right-3 md:top-[50px]"
+          >
+            0
+          </div>
+        </div>
+      </nav>
+
+      <div
+        id="shopping-bag-content"
+        class="fixed top-[70px] bg-white right-0 w-[350px] md:w-[400px] hidden px-5 z-40 shadow-md"
+      >
+        <h2 class="mt-5 font-semibold text-xl mb-5">Shopping bag</h2>
+        <div id="bag-items" class="max-h-[400px] overflow-y-auto"></div>
+
+        <div class="flex justify-end my-5 font-semibold">
+          <span>Total: €<span id="total-price">0.00</span></span>
+        </div>
+        <div class="flex justify-center mb-5">
+          <button
+            class="bg-pink-300 w-96 h-10 hover:bg-black text-white text-lg font-semibold"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="bg-gradient-to-b from-neutral-200 to-white flex flex-col justify-between px-40"
+      >
+        <div class="mt-20 font-krona text-xl flex justify-center">
+          <span>Shopping bag</span>
+        </div>
+        <div class="flex justify-between px-20">
+          <div
+            id="checkout-page-content"
+            class="h-96 bg-red-500 w-96 mt-20"
+          ></div>
+          <div
+            class="bg-white p-10 mt-20 mb-40 flex flex-col w-96 rounded-md shadow-lg"
+          >
+            <div class="flex-col justify-center items-center mb-5">
+              <input
+                class="mb-3 px-2 h-12 outline-none w-[304px] rounded-md bg-neutral-100"
+                type="text"
+                placeholder="Your Name"
+              />
+              <input
+                class="mb-3 px-2 h-12 outline-none w-[304px] rounded-md bg-neutral-100"
+                type="text"
+                placeholder="Your Surname"
+              />
+              <input
+                class="mb-3 px-2 h-12 outline-none w-[304px] rounded-md bg-neutral-100"
+                type="text"
+                placeholder="Your Address"
+              />
+            </div>
+            <div class="flex justify-between text-xs mb-2">
+              <div><span>Order value</span></div>
+              <div><span>00</span></div>
+            </div>
+            <div
+              class="flex justify-between mb-2 pb-5 border-b-[1px] border-black text-xs"
+            >
+              <div><span>Shipping</span></div>
+              <div><span>00</span></div>
+            </div>
+            <div class="flex justify-between font-semibold mb-10">
+              <div><span>Total</span></div>
+              <div><span>00</span></div>
+            </div>
+            <div
+              class="bg-black text-white h-12 flex items-center justify-center mb-10 hover:opacity-60"
+            >
+              <button>Continue to checkout</button>
+            </div>
+            <div class="text-xs mb-2"><span>We accept</span></div>
+            <div class="flex gap-5">
+              <img
+                class="size-10"
+                src="images/card (1).png"
+                alt="image mastercard"
+                title="MastercCard"
+              />
+              <img
+                class="size-10"
+                src="images/card (2).png"
+                alt="image discover"
+                title="Discover"
+              />
+              <img
+                class="size-10"
+                src="images/card.png"
+                alt="image visa card"
+                title="Visa"
+              />
+              <img
+                class="size-10"
+                src="images/american-express.png"
+                alt="image american express card"
+                title="American Express"
+              />
+              <img
+                class="size-10"
+                src="images/symbols.png"
+                alt="image klarna"
+                title="klarna"
+              />
+            </div>
+            <div class="flex gap-5 mb-5">
+              <img
+                class="size-10"
+                src="images/apple-pay.png"
+                alt="image appel pay"
+                title="Appel Pay"
+              />
+              <img
+                class="size-10"
+                src="images/gift-card.png"
+                alt="image gift-card"
+                title="Gift Card"
+              />
+              <img
+                class="size-10"
+                src="images/paypal.png"
+                alt="image paypal"
+                title="Paypal"
+              />
+            </div>
+            <div class="text-[10px] text-neutral-400">
+              <span
+                >The estimated tax will be confirmed once you added your
+                shipping address in checkout.<br />
+                Final prices and shipping costs are confirmed at checkout.
+                30-day returns. Read more about our return and refund
+                policy.</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="flex flex-col bg-gradient-to-b from-pink-100 to-white pt-5">
+      <img class="size-28 mb-20 mt-20" src="images/file (2).png" alt="" />
+      <div class="mb-20 px-10">
+        <span class="font-krona text-[9px]"
+          ><a class="font-semibold" href="#home">PRETTY-LOVELY.COM</a> /
+          CUSTOMER SERVICE / LEGAL NOTICE AND PRIVACY / COOKIE POLICY</span
+        >
+      </div>
+      <div
+        class="flex flex-col md:grid md:grid-cols-2 gap-y-12 justify-between mb-20 px-10 lg:flex lg:flex-row"
+      >
+        <div class="w-60 lg:w-44 xl:w-60">
+          <span class="">OUR PRODUCT</span>
+          <ul class="mt-5 font-semibold text-sm hover:font-extrabold">
+            <li><a href="#activities">BODY SHAPERS</a></li>
+          </ul>
+        </div>
+        <div class="w-80 xl:w-80">
+          <span>COMPANY INFORMATION</span>
+          <ul class="mt-5 font-semibold text-sm leading-7">
+            <li class="hover:font-extrabold">
+              <a href="">CAREERS AT PRETTY LOVELY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">ABOUT PRETTY LOVELY GROUP</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">PRETTY LOVELY GROUP SUSTAINABILITY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">PRESS MATERIAL</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">INVESTOR RELATIONS</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">CORPORATE GOVERNANCE</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-64 lg:w-60 xl:w-64">
+          <span>HELP</span>
+          <ul class="mt-5 font-semibold text-sm leading-7">
+            <li class="hover:font-extrabold">
+              <a href="#contact">CUSTOMER SERVICE</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="#findUs">FIND OUR STORE</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">LEGAL NOTICE AND PRIVACY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">GIFT CARD</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">COOKIE POLICY</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">REPORT A SCAM</a>
+            </li>
+            <li class="hover:font-extrabold">
+              <a href="">COOKIE SETTINGS</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-60 lg:w-60 xl:w-72">
+          <span>SIGN UP NOW</span>
+          <p class="mt-5 mb-5">
+            Welcome Offer: 10% off + free delivery on your first purchase!
+          </p>
+          <a class="font-semibold hover:font-extrabold" href="#contact"
+            >LEARN MORE</a
+          >
+        </div>
+      </div>
+      <div
+        class="flex flex-col pb-5 justify-between items-center h-30 bg-white -mb-10 px-10 lg:flex-row lg:justify-between lg:pb-0"
+      >
+        <div class="mb-6">
+          <p class="text-[12px]">
+            The content of this website is protected by copyright and is the
+            property of franck emmanuel D. 2024
+          </p>
+        </div>
+        <div class="flex gap-6 pb-5">
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-facebook-entouré-48.png"
+            alt="icon facebook"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-instagram-48.png"
+            alt="icon instagram"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-twitterx-48.png"
+            alt="icon x"
+          />
+          <img
+            class="size-5 cursor-pointer transition-transform ease-out duration-[0.5s] hover:scale-[1.3]"
+            src="images/icons8-tic-tac-100.png"
+            alt="icon tik tok"
+          />
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    ;
+    <script>
+      AOS.init();
+    </script>
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
